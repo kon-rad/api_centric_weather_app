@@ -22,11 +22,11 @@ $("#weather_btn").click(function() {
 	$.ajax({
 		type:"GET",
 		dataType:"jsonp",
-		url: "http://localhost:8000?callback=?",
+		url: "http://localhost:8000/1234?callback=?",
 		success: function(data) {
 			console.log("works");
-			console.log(data.hello);
-			$('#display').text(data.hello);
+			console.log(data);
+			$('#display').text(data);
 		}
 
 	});

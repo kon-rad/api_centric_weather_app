@@ -1,5 +1,5 @@
 var express = require('express');
-var request = require('superagent');
+// var request = require('superagent');
 
 // create the express app
 var app = express();
@@ -27,7 +27,8 @@ app.use(express.static(__dirname + '/public'));
 // render the homepage 
 app.get('/', function(req, res){
 	res.render('index');
-})
+});
+
 
 // app.get('/getWeather', function(req, res)
 // 	.get('http://localhost:8000')

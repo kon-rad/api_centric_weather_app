@@ -4,9 +4,11 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-// ROUTS FOR WEATHER API
+// ROUTES FOR WEATHER API
 
 var weatherRouter = express.Router();
+
+var weather = require('./weather.js')(app);
 
 // middleware to check for valid request 
 weatherRouter.use(function(req, res, next) {
@@ -25,7 +27,8 @@ app.use('/api', weatherRouter);
 
 
 app.get('/', function( req, res) {
-	res.send("welcome to my API!");
+	var responseJsonp = { hello: "This is first page"};
+	res.jsonp(responseJsonp);
 });
 
 // BASE SETUP
