@@ -26,10 +26,10 @@ weatherRouter.route('/weather')
 app.use('/api', weatherRouter);
 
 
-// app.get('/', function( req, res) {
-// 	var responseJsonp = { hello: "This is first page"};
-// 	res.jsonp(responseJsonp);
-// });
+app.get('/', function( req, res) {
+	var responseJsonp = { hello: "This is first page"};
+	res.jsonp(responseJsonp);
+});
 
 // BASE SETUP
 /*
