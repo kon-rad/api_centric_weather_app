@@ -11,10 +11,10 @@ var weatherRouter = express.Router();
 var weather = require('./weather.js')(app);
 
 // middleware to check for valid request 
-weatherRouter.use(function(req, res, next) {
-	console.log('Somethign is happening.');
-	next();
-});
+// weatherRouter.use(function(req, res, next) {
+// 	console.log('Somethign is happening.');
+// 	next();
+// });
 
 weatherRouter.route('/weather')
 	.get(function(req, res){
@@ -26,10 +26,10 @@ weatherRouter.route('/weather')
 app.use('/api', weatherRouter);
 
 
-app.get('/', function( req, res) {
-	var responseJsonp = { hello: "This is first page"};
-	res.jsonp(responseJsonp);
-});
+// app.get('/', function( req, res) {
+// 	var responseJsonp = { hello: "This is first page"};
+// 	res.jsonp(responseJsonp);
+// });
 
 // BASE SETUP
 /*
