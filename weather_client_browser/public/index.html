@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" np-app="weather_forecast">
 	<head>
 		<title>Weather API</title>
-		<script
-		  src="https://code.jquery.com/jquery-3.2.1.min.js"
-		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		  crossorigin="anonymous"></script>
+
+        <meta name="description" content="weather API application">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script> 
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../node_modules/angular/angular.min.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+        <script src="../server/controllers/main-controller.js"></script>
 	</head>
 	<body>
-			<label for="zip_input">Enter Zip Code</label>
-			<input id="zip_input" name="zip_input" type="text"/>
-			<button type="submit" id="weather_btn" class="zip_btn">submit</button>
-			<div class="display_res" id="display">
-			display here
+		<div class="container-fluid">
+			<div class="row">
+	        	<div  ng-controller="MainController" class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+		          <h1>
+		            Weather forecast
+	              {{ message }}
+		          </h1>
+		            <div>{{error}}</div>
+					<form action="/send_zip" method="post">
+						<label for="zip_input">Enter Zip Code</label>
+						<input id="zip_input" name="zip_input" type="text"/>
+						<input type="submit" id="weather_btn" class="zip_btn" value="get weather"/>
+					</form>
+					<div class="display_res" id="display">
+					display here
+					</div>		            
+<!-- 		    	        <div id="photos" class="row-flex photos">
+			                <a ng-repeat="photo in photos | limitTo:25" id="image{{photo.id}}" href="#" class="column image show-fullsize">
+			                <div class="img-thumbnail" style="background-image: url({{ photo.thumbnailUrl}});"></div>
+			                <h5>{{photo.title}}</h5>
+			                <p class="img-description"></p>
+			                </a>              
+		    	        </div> -->
+	            </div>
 			</div>
+	    </div>
+
 	</body>
 </html>

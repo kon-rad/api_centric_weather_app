@@ -1,9 +1,12 @@
 var express = require('express');
-// var request = require('superagent');
+var bodyParser = require('body-parser');
+var request = require('request');
 
 // create the express app
 var app = express();
 var router = express.Router();
+var weather_api = "http://localhost:8000/";
+var zip;
 
 // set the view engine to use EJS and set default views directory
 app.set('view engine', 'ejs');
@@ -11,6 +14,11 @@ app.set('views', __dirname + '/public/views');
 
 // tell express which directory to serve static assets like css, images, etc.
 app.use(express.static(__dirname + '/public'));
+app.use('\node_modules', express.static(__dirname + "/server"));
+
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + '/public/index.html');
+});
 
 // client id and secret from AuthoO Client
 // var NON_INTERACTIVE_CLIENT_ID = '';
@@ -24,22 +32,18 @@ app.use(express.static(__dirname + '/public'));
 // 	audience: ''
 // }
 
-// render the homepage 
-app.get('/', function(req, res){
-	res.render('index');
-});
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.post('/send_zip', function(req, res) {
+	console.log("-"+req.body.zip_input + "-");
+	zip = req.body.zip_input;
 
-// app.get('/getWeather', function(req, res)
-// 	.get('http://localhost:8000')
-// 	.end(function(err, data) {
-// 		if (data.status == 403) {
-// 			res.send(403, '403 forbidden');
-// 		} else {
-// 			var weather = data.body;
-// 			res.send(weather);
-// 		}
-// 	})
+	  request.get("http://localhost:8000/" + zip, {json: true}, function(err, res, body) {
+	      if (!err && res.statusCode === 200) {
+	      	console.log(body);
+	      }
+	  }).pipe(res);
+})
 
 // set weather website to listen on port 3000
 app.listen(3000);

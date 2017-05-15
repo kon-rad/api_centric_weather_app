@@ -16,21 +16,21 @@ $(document).ready(function(){
 		document.getElementById('display').innerHTML = json;
 	}
 
-	$("#weather_btn").click(function() {
-		console.log("clicked");
-		var zip = $('#zip_input').val();
-		$.ajax({
-			type:"GET",
-			dataType:"jsonp",
-			url: "http://localhost:8000/" + zip + "?callback=?",
-			success: function(data) {
-				console.log("works");
-				console.log(data);
-				$('#display').text(data);
-			}
+	// $("#weather_btn").click(function() {
+	// 	console.log("clicked");
+	// 	var zip = $('#zip_input').val();
+	// 	$.ajax({
+	// 		type:"GET",
+	// 		dataType:"jsonp",
+	// 		url: "http://localhost:8000/" + zip + "?callback=?",
+	// 		success: function(data) {
+	// 			console.log("works");
+	// 			console.log(data);
+	// 			$('#display').text(data);
+	// 		}
 
-		});
-	});
+	// 	});
+	// });
 
 	
 })
