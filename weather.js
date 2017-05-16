@@ -17,13 +17,13 @@ module.exports = function(app) {
 			if (error) {
 				throw error;
 			} if (w_data) {
-				res.json(JSON.parse(w_data));
+				res.send(w_data);
 			} else { 
 				request(WU_API_URL + zip, function(error, response, body) {
 					if (error) {throw error; return};
 					if (!error && response.statusCode === 200) {
-						res.json(body);
-						client.setex(WU_API_URL + zip, 3600, JSON.stringify(body), function(error) {
+						res.send(body);
+						client.setex(WU_API_URL + zip, 3600, body, function(error) {// JSON.stringify(body) JSON.parse(...)
 							if (error) {throw eorror;};
 						});
 					} else {
