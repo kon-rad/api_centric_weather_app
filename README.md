@@ -11,7 +11,7 @@ $ npm install
 $ redis-server
 ```
 In a new terminal window cd into clone directory and start API server with `gulp`
-\nAgain in a new terminal window cd into clone directory
+Again in a new terminal window cd into clone directory
 ```
 $ cd weather_client_browser
 $ npm install
