@@ -11,8 +11,7 @@ var WU_API_URL = 'http://api.wunderground.com/api/29698e56c84c01fa/forecast/q/';
 
 module.exports = function(app) {
 	app.get('/:zipcode', function( req, res) {
-		var zip = req.params.zipcode +'.json';//?callback=your_js_callback_function
-
+		var zip = req.params.zipcode +'.json';
 		client.get(WU_API_URL + zip, function(error, w_data) {
 			if (error) {
 				throw error;

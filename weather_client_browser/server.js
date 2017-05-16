@@ -1,6 +1,5 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// var request = require('request');
 var request = require('superagent');
 
 
@@ -42,8 +41,7 @@ function getAccessToken(req, res, next) {
 				req.access_token = res.body.access_token;
 				next();
 			} else {
-				console.log(err);
-				// res.send(401, 'Unauthorized');
+				res.send(401, 'Unauthorized');
 			}
 		})
 }
@@ -59,26 +57,11 @@ app.get('/api', getAccessToken, function(req, res){
 				res.send(403, '403 Forbidden');
 			} else {
 				var weather_data = data;
-				console.log(weather_data.text);
-				console.log("recieved weather data");
 				res.send(weather_data.text);
 			}
 		})
 })
 
-// app.post('/send_zip', function(req, res) {
-// 	console.log("-"+req.body.zip_input + "-");
-// 	zip = req.body.zip_input;
-
-// 	  request.get("http://localhost:8000/" + zip, {json: true}, function(err, res, body) {
-// 	      if (!err && res.statusCode === 200) {
-// 	      	console.log(body);
-// 	      }
-// 	  }).pipe(res);
-// })
-
-
-// set weather website to listen on port 3000
 app.listen(port, function(err) {
 	console.log("running server on port " + port);
 });
