@@ -18,4 +18,4 @@ $ npm install
 $ gulp
 ```
 
-
+The client should now be running on localhost:3000 and the API on localhost:800
