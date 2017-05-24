@@ -29,7 +29,7 @@
 					<div ng-show="loading" class="loader"></div>
 					{{not_found}}
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-4 display" style="margin-top:50px;" ng-repeat="day in forecastday | limitTo:3">
+						<div ng-show="!loading" class="col-xs-12 col-sm-12 col-md-4 display" style="margin-top:50px;" ng-repeat="day in forecastday | limitTo:3">
 							<h3>{{day.date.weekday}}</h3>
 							<p>{{day.date.monthname}} {{day.date.day}}, {{day.date.year}}</p>
 							<img ng-src='{{day.icon_url}}'ng-alt='{{day.icon}}'>

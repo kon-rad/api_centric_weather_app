@@ -17,6 +17,7 @@ module.exports = function(app) {
 				throw error;
 			} if (w_data) {
 				res.send(w_data);
+				console.log("data recieved from cache");
 			} else { 
 				request(WU_API_URL + zip, function(error, response, body) {
 					if (error) {throw error; return};
@@ -25,6 +26,7 @@ module.exports = function(app) {
 						client.setex(WU_API_URL + zip, 3600, body, function(error) {// JSON.stringify(body) JSON.parse(...)
 							if (error) {throw eorror;};
 						});
+						console.log("data recieved from WU api");
 					} else {
 						res.send(response.statusCode);
 					}
